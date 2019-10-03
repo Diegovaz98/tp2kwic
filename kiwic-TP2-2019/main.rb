@@ -1,50 +1,6 @@
+require_relative "./modules.rb"
 
-module Sorting
 
-    def sort_Alphabet(pesquisa)
-        pesquisa.sort
-    end
-
-    def split_input(string, splitter)
-
-        string.downcase.split(splitter);
-
-    end
-
-end    
-
-module Search
-
-    def searching
-
-    end
-end
-
-class DblpAPI
-
-    def acessar
-    end
-end
-    
-class Arquivo
-    attr_accessor :vectorLines
-    include Sorting
-
-    def openFile(text)
-
-        file = File.open("arquivo/"+text,"r")
-        @dataLines=file.read
-        file.close
-        @vectorLines = split_input(@dataLines, "\n")
-      
-    end
-
-    def copy_file
-        frase = @dataLines
-    end
-
-end
-    
 
 puts "Escolha entre\n [1] Arquivo txt\n [2]API(por favor não)"
 escolha = gets.chomp.to_i
@@ -57,9 +13,7 @@ when 1
     puts "Informe o nome do arquivo: "
     a.openFile(gets.chomp);
     puts "Seu aquivo aqui: "
-    a.vectorLines.each do |linha|
-        puts linha
-    end
+    a.matcheWords(a.vectorLines, "zodiac")
 when 2
     puts "2"
     # tratar API

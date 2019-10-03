@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative './main'
+require_relative './modules.rb'
 
 class SortingTest < Minitest::Test
     puts "Jujuba"
@@ -8,7 +8,7 @@ class SortingTest < Minitest::Test
     end
 
     def test_split_string
-        assert_equal ["shreck", "is", "a", "good", "boy"], Arquivo.new.split_input("Shreck is a good boy")
+        assert_equal ["shreck", "is", "a", "good", "boy"], Arquivo.new.split_input("Shreck is a good boy", " ")
     end
 
 end
@@ -17,7 +17,12 @@ end
 class ArquivoTest < Minitest::Test
 
     def test_is_read_working?        
-        assert_equal "Zodiac the book\nA really crazy dog\nXuxa just for kids\nShreck in so far far away\nBingo is his nameo", Arquivo.new.openFile("texto.txt")
+        assert_equal ["zodiac the book", "a really crazy dog", "xuxa just for kids", "shreck in so far far away", "bingo is his nameo zodiac"], Arquivo.new.openFile("texto.txt")
     end
 
+    def test_is_matching
+        assert_equal ["zodiac the book", "bingo is his nameo zodiac"], Arquivo.new.matcheWords(["zodiac the book", "really crazy dog", "xuxa just for kids", "shreck in so far far away", "bingo is his nameo zodiac"], "zodiac")
+    end
 end
+
+
