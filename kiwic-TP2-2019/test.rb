@@ -16,12 +16,16 @@ end
 
 class ArquivoTest < Minitest::Test
 
-    def test_is_read_working?        
-        assert_equal ["zodiac the book", "a really crazy dog", "xuxa just for kids", "shreck in so far far away", "bingo is his nameo zodiac"], Arquivo.new.openFile("texto.txt")
+    def test_is_read_working        
+        assert_equal ["zodiac the book", "a really crazy dog", "xuxa just for kids", "shreck in so far far away", "bingo is his nameo zodiac"], Arquivo.new.openFile("arquivo","texto.txt")
     end
 
     def test_is_matching
         assert_equal ["zodiac the book", "bingo is his nameo zodiac"], Arquivo.new.matcheWords(["zodiac the book", "really crazy dog", "xuxa just for kids", "shreck in so far far away", "bingo is his nameo zodiac"], "zodiac")
+    end
+
+    def test_is_separated
+        assert_equal[" a ", " is ", " the "], Arquivo.new.separar("a\n is\n the")
     end
 end
 
