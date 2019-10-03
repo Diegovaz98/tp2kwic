@@ -24,12 +24,22 @@ end
 
 module Basic
     
-    def openFile(pasta, text)
+    def openFile(folder, text)
 
-        file = File.open(pasta+"/"+text,"r")
+        file = File.open(folder+"/"+text,"r")
         @dataLines=file.read
         file.close
         @vectorLines = split_input(@dataLines, "\n")
+    end
+
+    def separar(vetorWords)
+        @newVetor = []
+        vetorWords.each do |word|
+            word = " ."+ word + " "  
+            @newVetor.push(word)          
+        end
+        vetorWords = @newVetor
+        puts vetorWords
     end
 end
 
