@@ -4,7 +4,7 @@ require_relative './main'
 class SortingTest < Minitest::Test
     puts "Jujuba"
     def test_is_alphabetical?
-        assert_equal ["likes", "shreck", "zodiac"], Arquivo.new.sort_Alphabet(Arquivo.new.split_input("Shreck likes zodiac"))
+        assert_equal ["likes", "shreck", "zodiac"], Arquivo.new.sort_Alphabet(Arquivo.new.split_input("Shreck likes zodiac", " "))
     end
 
     def test_split_string
