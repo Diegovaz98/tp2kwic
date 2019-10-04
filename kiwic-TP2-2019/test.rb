@@ -25,7 +25,7 @@ class ArquivoTest < Minitest::Test
     end
 
     def test_is_separated
-        assert_equal [" a ", " is ", " the "], Arquivo.new.separar("a\n is\n the")
+        assert_equal [" a ", " is ", " the "], Arquivo.new.addSpace(["a", "is", "the"])
     end
 end
 
