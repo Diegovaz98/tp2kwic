@@ -32,14 +32,13 @@ module Basic
         @vectorLines = split_input(@dataLines, "\n")
     end
 
-    def separar(vetorWords)
+    def addSpace(vetorWords)
         @newVetor = []
         vetorWords.each do |word|
-            word = " ."+ word + " "  
+            word = " "+ word + " "  
             @newVetor.push(word)          
         end
         vetorWords = @newVetor
-        puts vetorWords
     end
 end
 
