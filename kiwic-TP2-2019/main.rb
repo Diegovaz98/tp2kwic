@@ -24,7 +24,10 @@ when 1
 when 2
     puts "insira a chave de busca"
     query = gets.chomp
+    query="test"
     dblp = DblpAPI.new
-    puts dblp.parseJSON(dblp.search(query))
+    dblp.parseJSON(dblp.search(query))["result"]["hits"]["hit"].each do |item|
+        puts item["info"]["title"].gsub! query, "*"+query+"*"
+    end
 end
     

@@ -3,8 +3,8 @@ require 'json'
 
 class DblpAPI
 
-    def search(q)
-        url = "https://dblp.org/search/publ/api?q=#{q}&format=json"
+    def search(string)
+        url = "https://dblp.org/search/publ/api?q=#{string}&format=json"
         response = RestClient.get "#{url}"
 
     end

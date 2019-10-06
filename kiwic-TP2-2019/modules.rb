@@ -8,9 +8,10 @@ module Kwic
         end
         @matching
     end
+
 end
 
-module Sorting
+module HandleString
 
     def sort_Alphabet(pesquisa)
         pesquisa.sort
@@ -59,7 +60,7 @@ class Arquivo
     attr_accessor :stop_words
     
     include Kwic
-    include Sorting
+    include HandleString
     include Basic
 
     # def openFile(text)
