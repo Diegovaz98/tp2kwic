@@ -2,7 +2,7 @@ module Kwic
     def matcheWords(arquivo, palavra)
         @matching = []
         arquivo.each do |linha|
-            if linha.include? palavra
+            if linha.include? (" "+palavra || palavra+" " || " "+palavra+" ")  
                 @matching.push(linha)   
             end
         end
