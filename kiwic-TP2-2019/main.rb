@@ -1,5 +1,5 @@
 require_relative "./modules.rb"
-
+require_relative "./class/dblp.rb"
 
 
 puts "Escolha entre\n [1] Arquivo txt\n [2]API(por favor não)"
@@ -22,7 +22,9 @@ when 1
     b.openFile("recurso", "stop_words.txt")
     b.separar(b.vectorLines)
 when 2
-    puts "2"
-    # tratar API
+    puts "insira a chave de busca"
+    query = gets.chomp
+    dblp = DblpAPI.new
+    puts dblp.parseJSON(dblp.search(query))
 end
     
