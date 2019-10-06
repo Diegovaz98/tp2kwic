@@ -13,8 +13,8 @@ class HandleStringTest < Minitest::Test
     end
 
     def test_no_stop_words
-
-    end
+        assert_equal " love  important", Arquivo.new.remove_stop_words("because love is important", ["because", "is"]) 
+    end 
 
 end
 
@@ -26,12 +26,12 @@ class ArquivoTest < Minitest::Test
     end
 
     def test_is_matching
-        assert_equal ["zodiac the book", "bingo is his nameo zodiac"], Arquivo.new.matcheWords(["zodiac the book", "really crazy dog", "xuxa just for kids", "shreck in so far far away", "bingo is his nameo zodiac"], "zodiac")
+        assert_equal ["a book the zodiac"], Arquivo.new.matche_words(["a book the zodiac", "really crazy dog", "xuxa just for kids", "shreck in so far far away", "bingo is his nameo zodiaco"], "zodiac")
     end
 
-    def test_is_separated
-        assert_equal [" a ", " is ", " the "], Arquivo.new.addSpace(["a", "is", "the"])
-    end
+    # def test_is_separated
+    #     assert_equal [" a ", " is ", " the "], Arquivo.new.addSpace(["a", "is", "the"])
+    # end
 end
 
 

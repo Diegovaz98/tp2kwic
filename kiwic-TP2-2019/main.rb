@@ -2,7 +2,7 @@ require_relative "./modules.rb"
 require_relative "./class/dblp.rb"
 
 
-puts "Escolha entre\n [1] Arquivo txt\n [2]API(por favor não)"
+puts "Escolha entre\n [1] Arquivo txt\n [2]API"
 escolha = gets.chomp.to_i
 
 
@@ -18,16 +18,31 @@ when 1
     # puts "Seu aquivo aqui: "
     # a.matcheWords(a.vectorLines, "zodiac")
 
-    b = Arquivo.new
-    b.openFile("recurso", "stop_words.txt")
-    b.separar(b.vectorLines)
+    #Código para pegar a frase de busca do usuário e transformar em vetor de busca
+    stopWords = Arquivo.new
+    stopWords.openFile("recurso", "stop_words.txt")
+    frase = Phrase.insere_phrase(stopWords);
+    #Código para abrir o arquivo onde queremos fazer a busca
+    arqBase = Arquivo.new
+    
+    puts "Informe a pasta do arquivo"
+    pasta =gets.chomp
+    puts "Informe o nome do arquivo com sua extensão (exemplo: texto.txt)"
+    nome =gets.chomp
+    arqBase.openFile(pasta,nome)
+    
+    frase.each do |palavra|
+        puts arqBase.matche_words(arqBase.vectorLines,palavra)
+    end
+
+    
 when 2
-    puts "insira a chave de busca"
-    query = gets.chomp
-    query="test"
     dblp = DblpAPI.new
-    dblp.parseJSON(dblp.search(query))["result"]["hits"]["hit"].each do |item|
-        puts item["info"]["title"].gsub! query, "*"+query+"*"
+    vectorFrase = Phrase.insere_phrase(dblp)
+    vectorFrase.each do |word|
+        dblp.parseJSON(dblp.search(word))["result"]["hits"]["hit"].each do |item|
+            puts item["info"]["title"].gsub! word, "*"+word+"*"
+        end
     end
 end
     

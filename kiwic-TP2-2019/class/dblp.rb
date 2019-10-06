@@ -1,7 +1,11 @@
+require_relative '../modules.rb'
 require 'rest-client'
 require 'json'
 
 class DblpAPI
+
+    include Kwic
+    include HandleString
 
     def search(string)
         url = "https://dblp.org/search/publ/api?q=#{string}&format=json"
