@@ -30,9 +30,15 @@ when 1
     nome =gets.chomp
     arqBase.openFile(pasta,nome)
     
+    outputFile = Arquivo.new
+    puts "Digite o nome do arquivo de saida"
+    newFile = gets.chomp
     frase.each do |palavra|
-        puts arqBase.matche_words(arqBase.vectorLines,palavra)
+        vetorTitle= arqBase.matche_words(arqBase.vectorLines,palavra)
+       outputFile.write_file(newFile, vetorTitle)
     end
+
+    puts "Seu arquivo de busca está pronto dentro da pasta: arquivos"
 
     
 when 2

@@ -32,9 +32,15 @@ module HandleString
         question
     end
 
+    def self.vector_to_string(vector)
+        puts vector.join("\n")
+        vector.join('\n')
+    end
+
 end
 
 module Phrase
+
     def self.insere_phrase(stopWords)
         puts "Escreva a frase que voce procura"
         frase= gets.chomp
@@ -53,14 +59,6 @@ module Basic
         file.close
         @vectorLines = split_input(@dataLines, "\n")
     end
-
-    # def addSpace(vetorWords)
-    #     @newVetor = []
-    #     vetorWords.each do |word|
-    #         @newVetor.push(word)          
-    #     end
-    #     vetorWords = @newVetor
-    # end
 end
 
 class Frase
@@ -82,5 +80,12 @@ class Arquivo
     # def separate
     #     @stop_words = []
     # end
+
+    def write_file(newfile, vector)
+        vector.each do |phrase|
+        file = File.open("arquivo/"+newfile, "a"){|file| file.write(phrase + "\n")}
+    
+        end
+    end
 
 end

@@ -29,9 +29,9 @@ class ArquivoTest < Minitest::Test
         assert_equal ["a book the zodiac"], Arquivo.new.matche_words(["a book the zodiac", "really crazy dog", "xuxa just for kids", "shreck in so far far away", "bingo is his nameo zodiaco"], "zodiac")
     end
 
-    # def test_is_separated
-    #     assert_equal [" a ", " is ", " the "], Arquivo.new.addSpace(["a", "is", "the"])
-    # end
+    def test_write_file
+        assert_equal "This is a text file", Arquivo.new.write_file("nomeTeste", ["This is a text file"])
+    end
 end
 
 
