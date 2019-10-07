@@ -20,7 +20,6 @@ when 1
 
     #Código para pegar a frase de busca do usuário e transformar em vetor de busca
     stopWords = Arquivo.new
-    stopWords.openFile("recurso", "stop_words.txt")
     frase = Phrase.insere_phrase(stopWords);
     #Código para abrir o arquivo onde queremos fazer a busca
     arqBase = Arquivo.new
@@ -37,8 +36,9 @@ when 1
 
     
 when 2
-    dblp = DblpAPI.new
-    vectorFrase = Phrase.insere_phrase(dblp)
+    phrase = Arquivo.new
+    vectorFrase = Phrase.insere_phrase(phrase)
+    dblp = dblpAPI.new
     vectorFrase.each do |word|
         dblp.parseJSON(dblp.search(word))["result"]["hits"]["hit"].each do |item|
             puts item["info"]["title"].gsub! word, "*"+word+"*"
