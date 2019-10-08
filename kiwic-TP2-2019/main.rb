@@ -63,8 +63,10 @@ when 1
         system "clear"
         puts "Digite o nome do arquivo de saida"
         
+
+        vectorPhraseShiftedOrdenado=  arqBase.sort_Alphabet(vectorPhraseShifted)
         newFile = gets.chomp
-        arqBase.write_file(newFile, vectorPhraseShifted)
+        arqBase.write_file(newFile, vectorPhraseShiftedOrdenado)
         
         puts "Seu arquivo de busca está pronto dentro da pasta: arquivo/#{newFile}.txt"
         
