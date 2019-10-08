@@ -1,4 +1,6 @@
 module Search
+    attr_accessor :matching 
+    
     #encontra dentro do vetor de frases uma palavra especificada pelo usuario
     def matche_words(vetorTexto, palavra)
         @matching = []

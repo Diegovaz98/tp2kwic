@@ -12,7 +12,7 @@ module HandleString
     def remove_stop_words(question, vectorStopWords)
         vectorStopWords.each do |stopWord|
             if question.match(/\b#{stopWord}\b/)
-                question.gsub! stopWord, ''
+                question.gsub! (/\b#{stopWord}\b/), ''
             end
         end
         question

@@ -4,44 +4,69 @@ require_relative "./modules/phrase.rb"
 
 
 
-puts "Escolha entre\n [1] Arquivo txt\n [2]API"
+system "clear"
+puts    "       Deseja  pegar  as  frasea  de  onde?
+        [1] Arquivo txt           [2]API"
+
+
 escolha = gets.chomp.to_i
 
 
+
+
 case escolha
-
+    
 when 1
-    # a = Arquivo.new
-    # puts "Informe a pasta: "
-    # pasta = gets.chomp
-    # puts "Informe o nome do arquivo: "
-    # nome = gets.chomp
-    # a.openFile(pasta, nome);
-    # puts "Seu aquivo aqui: "
-    # a.matcheWords(a.vectorLines, "zodiac")
+    
+    puts    "       Buscar Titulos especificos?
+        [1] Sim             [2] Não"
+    escolha = gets.chomp.to_i
 
-    #Código para pegar a frase de busca do usuário e transformar em vetor de busca
     stopWords = Arquivo.new
-    frase = Phrase.insere_phrase(stopWords);
-    #Código para abrir o arquivo onde queremos fazer a busca
+    stopWords.openFile("recurso", "stop_words")
+    
     arqBase = Arquivo.new
+    arqBase.openFile("arquivo","texto")
     
-    puts "Informe a pasta do arquivo"
-    pasta =gets.chomp
-    puts "Informe o nome do arquivo com sua extensão (exemplo: texto.txt)"
-    nome =gets.chomp
-    arqBase.openFile(pasta,nome)
-    
-    outputFile = Arquivo.new
-    puts "Digite o nome do arquivo de saida"
-    newFile = gets.chomp
-    frase.each do |palavra|
-        vetorTitle= arqBase.matche_words(arqBase.vectorLines,palavra)
-       outputFile.write_file(newFile, vetorTitle)
+    case escolha
+        
+    when 1
+        
+        #Código para pegar a frase de busca do usuário e transformar em vetor de busca
+        frase = Phrase.insere_phrase(stopWords);
+
+        #Código para abrir o arquivo onde queremos fazer a busca
+        
+        vectorTitle = []
+        frase.each do |palavra|
+            vectorTitle.concat arqBase.matche_words(arqBase.vectorLines,palavra)
+        end
+        
+    when 2
+        vectorTitle = arqBase.vectorLines
     end
-
-    puts "Seu arquivo de busca está pronto dentro da pasta: arquivos"
-
+    
+    
+    puts    "       Escolha o algoritmo: 
+        [1] Kwic"
+    escolha = gets.chomp.to_i
+    
+    case escolha
+        
+    when 1
+        vectorPhraseShifted = []
+        vectorTitle.each do |line|
+            vectorPhraseShifted.concat arqBase.change(arqBase.split_input(arqBase.remove_stop_words(line, stopWords.vectorLines), " "))
+        end
+        
+        puts "Digite o nome do arquivo de saida"
+        
+        newFile = gets.chomp
+        arqBase.write_file(newFile, vectorPhraseShifted)
+        
+        puts "Seu arquivo de busca está pronto dentro da pasta: arquivo/#{newFile}.txt"
+        
+    end
     
 when 2
     phrase = Arquivo.new

@@ -12,7 +12,6 @@ require_relative '../modules/changePhrase'
 class Arquivo
 
     attr_accessor :vectorLines
-    attr_accessor :matching
     attr_accessor :stop_words
     attr_accessor :newLines
 
@@ -29,11 +28,9 @@ class Arquivo
     
     def write_file(newfile, vector)
         vector.each do |phrase|
-            file = File.open("arquivo/"+newfile+".txt", "w"){|file| file.write(phrase + "\n")}
+            file = File.open("arquivo/"+newfile+".txt", "a"){|file| file.write(phrase + "\n")}
         end
         newfile
     end
-
-
 
 end
