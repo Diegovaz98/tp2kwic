@@ -1,5 +1,5 @@
 module ChangePhrase
-    def change (vectorPhrase)
+    def kwic (vectorPhrase)
         palavras = vectorPhrase.length
         @newLines = []
         while palavras >  0 do 

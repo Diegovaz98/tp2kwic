@@ -36,7 +36,7 @@ class ArquivoTest < Minitest::Test
         assert_equal ["this is a text file"], Arquivo.new.openFile("arquivo" ,Arquivo.new.write_file("nomeTeste", ["This is a text file"]))
     end
     def test_is_changing
-        assert_equal ["legal eu sou", "sou legal eu","eu sou legal"],Arquivo.new.change(["eu", "sou", "legal"])
+        assert_equal ["legal eu sou", "sou legal eu","eu sou legal"],Arquivo.new.kwic(["eu", "sou", "legal"])
     end
 end
 

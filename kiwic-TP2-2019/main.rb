@@ -13,7 +13,7 @@ escolha = gets.chomp.to_i
 
 
 
-
+# Responsavel por escolher entre Buscar os titulos de um arquivo ou da API do dblo
 case escolha
     
 when 1
@@ -28,6 +28,7 @@ when 1
     arqBase = Arquivo.new
     arqBase.openFile("arquivo","texto")
     
+    #Resposavel por ecolher se vai ou não filtrar os titulos nos quais o algoritmo será aplicado 
     case escolha
         
     when 1
@@ -51,12 +52,13 @@ when 1
         [1] Kwic"
     escolha = gets.chomp.to_i
     
+    #Responsável por selecionar o algoritmo que vai ser aplicado no vetor de titulos
     case escolha
         
     when 1
         vectorPhraseShifted = []
         vectorTitle.each do |line|
-            vectorPhraseShifted.concat arqBase.change(arqBase.split_input(arqBase.remove_stop_words(line, stopWords.vectorLines), " "))
+            vectorPhraseShifted.concat arqBase.kwic(arqBase.split_input(arqBase.remove_stop_words(line, stopWords.vectorLines), " "))
         end
         system "clear"
         puts "Digite o nome do arquivo de saida"
