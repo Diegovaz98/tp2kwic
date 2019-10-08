@@ -1,10 +1,11 @@
-require_relative '../modules.rb'
+require_relative '../modules/search.rb'
+require_relative '../modules/handleString.rb'
 require 'rest-client'
 require 'json'
 
 class DblpAPI
 
-    include Kwic
+    include Search
     include HandleString
 
     def search(string)
@@ -17,6 +18,5 @@ class DblpAPI
         if response.class == RestClient::Response
             body = JSON.parse(response.body)
         end
-        body
     end
 end

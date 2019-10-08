@@ -1,5 +1,7 @@
-require_relative "./modules.rb"
 require_relative "./class/dblp.rb"
+require_relative "./class/arquivo.rb"
+require_relative "./modules/phrase.rb"
+
 
 
 puts "Escolha entre\n [1] Arquivo txt\n [2]API"
@@ -44,7 +46,7 @@ when 1
 when 2
     phrase = Arquivo.new
     vectorFrase = Phrase.insere_phrase(phrase)
-    dblp = dblpAPI.new
+    dblp = DblpAPI.new
     vectorFrase.each do |word|
         dblp.parseJSON(dblp.search(word))["result"]["hits"]["hit"].each do |item|
             puts item["info"]["title"].gsub! word, "*"+word+"*"
