@@ -1,5 +1,5 @@
-module ShiftPhrase
-    def altera (vectorPhrase)
+module ChangePhrase
+    def change (vectorPhrase)
         palavras = vectorPhrase.length
         @newLines = []
         while palavras >  0 do 

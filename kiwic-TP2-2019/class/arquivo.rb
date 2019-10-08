@@ -1,6 +1,6 @@
 require_relative '../modules/search'
 require_relative '../modules/handleString'
-require_relative '../modules/shiftPhrase'
+require_relative '../modules/changePhrase'
 
 
 # class Frase
@@ -18,10 +18,10 @@ class Arquivo
 
     include Search
     include HandleString
-    include ShiftPhrase 
+    include ChangePhrase 
 
     def openFile(folder, arquive)
-        file = File.open(folder+"/"+arquive,"r")
+        file = File.open(folder+"/"+arquive+".txt","r")
         @dataLines=file.read
         file.close
         @vectorLines = split_input(@dataLines, "\n")
@@ -29,9 +29,11 @@ class Arquivo
     
     def write_file(newfile, vector)
         vector.each do |phrase|
-        file = File.open("arquivo/"+newfile, "a"){|file| file.write(phrase + "\n")}
-    
+            file = File.open("arquivo/"+newfile+".txt", "w"){|file| file.write(phrase + "\n")}
         end
+        newfile
     end
+
+
 
 end

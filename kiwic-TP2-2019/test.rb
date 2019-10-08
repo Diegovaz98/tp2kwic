@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require_relative './modules/handleString.rb'
 require_relative './modules/phrase.rb'
-require_relative './modules/shiftPhrase.rb'
+require_relative './modules/changePhrase.rb'
 require_relative './modules/search.rb'
 require_relative './class/dblp.rb'
 require_relative './class/arquivo.rb'
@@ -25,7 +25,7 @@ end
 class ArquivoTest < Minitest::Test
 
     def test_is_read_working        
-        assert_equal ["zodiac the book", "a really crazy dog", "xuxa just for kids", "shrek in so far far away", "bingo is his nameo zodiac"], Arquivo.new.openFile("arquivo","texto.txt")
+        assert_equal ["zodiac the book", "a really crazy dog", "xuxa just for kids", "shrek in so far far away", "bingo is his nameo zodiac"], Arquivo.new.openFile("arquivo","texto")
     end
 
     def test_is_matching
@@ -33,10 +33,10 @@ class ArquivoTest < Minitest::Test
     end
 
     def test_write_file
-        assert_equal "This is a text file", Arquivo.new.write_file("nomeTeste", ["This is a text file"])
+        assert_equal ["this is a text file"], Arquivo.new.openFile("arquivo" ,Arquivo.new.write_file("nomeTeste", ["This is a text file"]))
     end
-    def test_is_sorting
-        assert_equal ["legal eu sou", "sou legal eu","eu sou legal"],Arquivo.new.altera(["eu", "sou", "legal"])
+    def test_is_changing
+        assert_equal ["legal eu sou", "sou legal eu","eu sou legal"],Arquivo.new.change(["eu", "sou", "legal"])
     end
 end
 
