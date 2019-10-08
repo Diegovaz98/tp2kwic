@@ -17,7 +17,7 @@ escolha = gets.chomp.to_i
 case escolha
     
 when 1
-    
+    system "clear"
     puts    "       Buscar Titulos especificos?
         [1] Sim             [2] Não"
     escolha = gets.chomp.to_i
@@ -46,7 +46,7 @@ when 1
         vectorTitle = arqBase.vectorLines
     end
     
-    
+    system "clear"
     puts    "       Escolha o algoritmo: 
         [1] Kwic"
     escolha = gets.chomp.to_i
@@ -58,7 +58,7 @@ when 1
         vectorTitle.each do |line|
             vectorPhraseShifted.concat arqBase.change(arqBase.split_input(arqBase.remove_stop_words(line, stopWords.vectorLines), " "))
         end
-        
+        system "clear"
         puts "Digite o nome do arquivo de saida"
         
         newFile = gets.chomp
