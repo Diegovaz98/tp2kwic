@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative "./class/dblp.rb"
 require_relative "./class/arquivo.rb"
 require_relative "./modules/phrase.rb"
@@ -29,33 +30,21 @@ when 1
     arqBase.openFile("arquivo","texto")
     
     #Resposavel por ecolher se vai ou não filtrar os titulos nos quais o algoritmo será aplicado 
-    case escolha
+    
         
-    when 1
-        
-        #Código para pegar a frase de busca do usuário e transformar em vetor de busca
-        frase = Phrase.insere_phrase(stopWords);
 
-        #Código para abrir o arquivo onde queremos fazer a busca
         
-        vectorTitle = []
-        frase.each do |palavra|
-            vectorTitle.concat arqBase.matche_words(arqBase.vectorLines,palavra)
-        end
-        
-    when 2
-        vectorTitle = arqBase.vectorLines
-    end
     
     system "clear"
     puts    "       Escolha o algoritmo: 
-        [1] Kwic"
+        [1] Kwic    [2]Kwac     [3]Kwoc"
     escolha = gets.chomp.to_i
     
     #Responsável por selecionar o algoritmo que vai ser aplicado no vetor de titulos
     case escolha
         
-    when 1
+    when 1     #Kwic
+        vectorTitle = arqBase.vectorLines
         vectorPhraseShifted = []
         vectorTitle.each do |line|
             vectorPhraseShifted.concat arqBase.kwic(arqBase.split_input(arqBase.remove_stop_words(line, stopWords.vectorLines), " "))
@@ -69,8 +58,18 @@ when 1
         arqBase.write_file(newFile, vectorPhraseShiftedOrdenado)
         
         puts "Seu arquivo de busca está pronto dentro da pasta: arquivo/#{newFile}.txt"
-        
-    end
+       
+    
+    when 3 #Kwoc
+        #Código para pegar a frase de busca do usuário e transformar em vetor de busca
+        frase = Phrase.insere_phrase(stopWords);
+        #Código para abrir o arquivo onde queremos fazer a busca
+        vectorTitle = arqBase.Kwoc(arqBase,frase)
+        system "clear"
+        puts "Digite o nome do arquivo de saida"
+        newFile = gets.chomp
+        arqBase.write_file(newFile, vectorTitle)
+        end
     
 when 2
     phrase = Arquivo.new

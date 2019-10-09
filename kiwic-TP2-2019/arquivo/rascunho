@@ -1,0 +1,42 @@
+ # def kwoc(vectorPhrase)
+    #     #numero de palavras dentro do vetor ja sem as stopwords e ordenados alfabeticament
+    #     indice=0
+    #     while indice < busca do
+            
+    #         indice++
+    #     end 
+    # end   
+
+
+
+
+when 3
+    # contador=0
+    # resultPhrase= []
+    # indice = frase[contador]
+    # vectorTitle.each do |palavra|
+        resultPhrase = arqBase.matche_words("texto.txt",frase)
+        #puts indice[contador] 
+        puts resultPhrase
+        #contador=contador+1
+    #end
+    # system "clear"
+    # puts "Digite o nome do arquivo de saida"        
+    # newFile = gets.chomp
+    # arqBase.write_file(newFile,resultPhrase) 
+
+    
+
+
+
+
+    Library indian boook
+
+    book indian library
+
+
+    Book
+    All the bok in the world
+
+    Indian
+    /    

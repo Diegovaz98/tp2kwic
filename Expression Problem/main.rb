@@ -12,7 +12,8 @@ puts
 sub = Sub.new(lit2, lit)
 sub.printf
 puts "" 
-add = Add.new(sub, lit)
+add = Add.new(lit, lit2)
+# add = Add.new(sub, lit)
 
 add.printf
 

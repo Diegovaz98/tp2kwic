@@ -11,5 +11,4 @@ module Search
         end
         @matching
     end
-    
 end
