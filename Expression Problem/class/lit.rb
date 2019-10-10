@@ -1,15 +1,17 @@
 require_relative '../interface/interfaceExp.rb'
 require_relative '../module/verify.rb'
 class Lit < InterfaceExp
-   include Verify
+   
+    include Verify
+   
    def verify(v)
-        if v.class==Fixnum
+        if v.class==Integer
             return true
         else 
-            puts "false"
-            return false
+            raise "Tipo invalido"
         end
     end
+
     def initialize(v)
         if verify(v) 
             @value = v

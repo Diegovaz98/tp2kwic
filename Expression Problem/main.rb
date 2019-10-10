@@ -3,7 +3,7 @@ require_relative './class/add.rb'
 require_relative './class/lit.rb'
 require_relative './class/sub.rb'
 
-lit = Lit.new(6)
+lit = Lit.new(7)
 lit2 = Lit.new(7)
 lit.printf
 puts

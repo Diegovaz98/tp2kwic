@@ -1,6 +1,5 @@
 class InterfaceExp
     
-    
     def printf
         raise "é necessário implementar esse metodo"
     end

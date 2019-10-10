@@ -2,9 +2,8 @@ require_relative '../interface/interfaceExp.rb'
 require_relative '../module/verify.rb'
 
 class Sub < InterfaceExp
+    
     include Verify
-    @left =  InterfaceExp
-    @right = InterfaceExp
 
     def initialize(l, r)
         if verify(l,r)
