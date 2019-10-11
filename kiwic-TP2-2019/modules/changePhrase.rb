@@ -1,30 +1,45 @@
 module ChangePhrase
     def kwic (vectorPhrase)
+
         palavras = vectorPhrase.length
         @newLines = []
+
         while palavras >  0 do 
-            #auxiliar = vectorPhrase.last
+            
+            # método responsável por retirar a última palavra do vetor e colocá-la na primeira posição
             vectorPhrase = vectorPhrase.insert(0,vectorPhrase.delete_at(vectorPhrase.length-1))
+            
+            # método responsável por transformar o vetor em uma string
             @newLines.push(vectorPhrase.join(" ")) 
             palavras=palavras-1
 
-            # print vectorPhrase
         end 
-        # puts @newLines
         @newLines
     end   
 
-    def kwoc (arqBase,frase)
-        vectorTitle= [] 
+    def kwoc (arqBase, frase, vectorTitle) 
+
+        vectorTitlesFiltred = []
         frase.each do |palavra|
-            vectorKey =  arqBase.matche_words(arqBase.vectorLines,palavra)
+
+            # método responsável por  verificar se uma palavra se encontra em algum titulo
+            vectorKey =  arqBase.matche_words(vectorTitle, palavra)
             tamanho = vectorKey.length
+
             if tamanho>0
+
                 vectorKey.each do |phraseKey|
-                    vectorTitle.push(palavra.upcase + ":   " +  phraseKey)
+
+                    # método responsável por montar a string no formato KEY:  FRASE
+                    vectorTitlesFiltred.push(palavra.upcase + ":   " +  phraseKey)
                 end
+
             end
         end
-        vectorTitle
+        if vectorTitlesFiltred.length > 0
+            return vectorTitlesFiltred
+        else
+            return false
+        end
     end
 end

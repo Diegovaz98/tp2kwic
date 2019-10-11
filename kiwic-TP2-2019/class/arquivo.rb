@@ -2,13 +2,6 @@ require_relative '../modules/search'
 require_relative '../modules/handleString'
 require_relative '../modules/changePhrase'
 
-
-# class Frase
-#     attr_accessor :matching
-#     attr_accessor :stop_words
-#     include HandleString
-# end
-
 class Arquivo
 
     attr_accessor :vectorLines
@@ -19,6 +12,7 @@ class Arquivo
     include HandleString
     include ChangePhrase 
 
+    # ler um arquivo e grava na memoria
     def openFile(folder, arquive)
         file = File.open(folder+"/"+arquive+".txt","r")
         @dataLines=file.read
@@ -26,6 +20,7 @@ class Arquivo
         @vectorLines = split_input(@dataLines, "\n")
     end
     
+    # escreve o resultado em um arquivo
     def write_file(newfile, vector)
         vector.each do |phrase|
             file = File.open("arquivo/"+newfile+".txt", "a"){|file| file.write(phrase + "\n")}

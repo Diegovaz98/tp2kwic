@@ -25,7 +25,7 @@ end
 class ArquivoTest < Minitest::Test
 
     def test_is_read_working        
-        assert_equal ["zodiac the book", "a really crazy dog", "xuxa just for kids", "shrek in so far far away", "bingo is his nameo zodiac"], Arquivo.new.openFile("arquivo","texto")
+        assert_equal ["zodiac the book", "a really crazy dog", "xuxa just for kids", "shrek in so far far away", "bingo is his nameo zodiac"], Arquivo.new.openFile("arquivo","textoParaOsTestes")
     end
 
     def test_is_matching
@@ -40,8 +40,8 @@ class ArquivoTest < Minitest::Test
     end
     def test_is_Kwoc
         arqBase = Arquivo.new
-        arqBase.openFile("arquivo","texto")
-        assert_equal ["SHREK:   shrek in so far far away"],arqBase.kwoc(arqBase,["shrek"])
+        arqBase.openFile("arquivo","textoParaOsTestes")
+        assert_equal ["SHREK:   shrek in so far far away"],arqBase.kwoc(arqBase,["shrek"], arqBase.vectorLines)
     end
 end
 
