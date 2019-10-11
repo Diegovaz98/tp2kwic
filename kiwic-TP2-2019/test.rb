@@ -10,7 +10,7 @@ class HandleStringTest < Minitest::Test
     puts "Jujuba"
     def test_is_alphabetical?
         assert_equal ["likes", "shreck", "zodiac"], Arquivo.new.sort_Alphabet(Arquivo.new.split_input("Shreck likes zodiac", " "))
-    end
+    end 
 
     def test_split_string
         assert_equal ["shreck", "is", "a", "good", "boy"], Arquivo.new.split_input("Shreck is a good boy", " ")

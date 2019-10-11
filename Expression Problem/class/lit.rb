@@ -5,7 +5,7 @@ class Lit < InterfaceExp
     include Verify
    
    def verify(v)
-        if v.class==Integer
+        if v.class==Fixnum
             return true
         else 
             raise "Tipo invalido"
