@@ -3,17 +3,12 @@ require_relative './class/add.rb'
 require_relative './class/lit.rb'
 require_relative './class/sub.rb'
 
-lit = Lit.new(7)
-lit2 = Lit.new(7)
-lit.printf
-puts
-lit2.printf
-puts
+
+lit = Lit.new(83)
+lit2 = Lit.new(23)
 sub = Sub.new(lit2, lit)
-sub.printf
-puts "" 
-add = Add.new(lit, lit2)
-# add = Add.new(sub, lit)
+# add = Add.new(lit, lit2)
+add = Add.new(sub, lit2)
 
 add.printf
 

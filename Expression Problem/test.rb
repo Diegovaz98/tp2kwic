@@ -21,12 +21,23 @@ class AddTest < Minitest::Test
         add = Add.new(lit, lit2)
         assert_equal 5, add.eval
     end 
-    #Teste Sub
-    def test_is_sub
-        lit = Lit.new(6)
+    
+    #Teste Add com lit na direita
+    def test_add_and_lit_right
+        lit = Lit.new(4)
         lit2 = Lit.new(8)
-        sub = Sub.new(lit2, lit)
-        assert_equal 2, sub.eval
+        add = Add.new(lit,lit2)
+        add2 = Add.new(add, lit2)
+        assert_equal 20 , add2.eval
+    end
+   
+    #Teste Add com lit na esquerda
+    def test_add_and_lit_left
+        lit = Lit.new(3)
+        lit2 = Lit.new(5)
+        add = Add.new(lit,lit2)
+        add2 = Add.new(lit2,add)
+        assert_equal 13 , add2.eval
     end
     
     #Teste Add com sub
@@ -37,24 +48,18 @@ class AddTest < Minitest::Test
         add = Add.new(sub, lit2)
         assert_equal 10 , add.eval
     end
+end
 
-    #Teste Add com lit na direita
-    def test_add_and_lit_right
-        lit = Lit.new(4)
+class SubTest < Minitest::Test
+    #Teste Sub
+    def test_is_sub
+        lit = Lit.new(6)
         lit2 = Lit.new(8)
-        add = Add.new(lit,lit2)
-        add2 = Add.new(add, lit2)
-        assert_equal 20 , add2.eval
+        sub = Sub.new(lit2, lit)
+        assert_equal 2, sub.eval
     end
-
-    #Teste Add com lit na esquerda
-    def test_add_and_lit_left
-        lit = Lit.new(3)
-        lit2 = Lit.new(5)
-        add = Add.new(lit,lit2)
-        add2 = Add.new(lit2,add)
-        assert_equal 13 , add2.eval
-    end
+    
+    
 
     #Teste sub com add
     def test_sub_and_add
@@ -94,11 +99,4 @@ class AddTest < Minitest::Test
         add2 = Add.new(add,lit4)
         assert_equal  12, add2.eval
     end 
-
-    # def test_is_r
-    #     assert_equal (2) 
-    # end
-    # def test_is_adding
-    #     assert_equal (3) 
-    # end
 end
