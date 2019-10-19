@@ -1,15 +1,18 @@
 require_relative '../interface/interfaceExp.rb'
 require_relative '../module/verify.rb'
+require_relative '../module/visitable.rb'
 
 class Sub < InterfaceExp
     
     include Verify
+    include Visitable
+    attr_accessor :left, :right
 
     def initialize(l, r)
-        if verify(l,r)
+        # if verify(l,r)
             @left = l
             @right = r
-        end
+        # end
     end
 
     def printf
@@ -18,8 +21,8 @@ class Sub < InterfaceExp
         @right.printf;
     end
 
-    def eval
-        @left.eval - @right.eval
-    end
+    # def eval
+    #     @left.eval - @right.eval
+    # end
     
 end

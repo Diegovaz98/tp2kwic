@@ -1,8 +1,12 @@
 require_relative '../interface/interfaceExp.rb'
 require_relative '../module/verify.rb'
+require_relative '../module/visitable.rb'
+
 class Lit < InterfaceExp
    
     include Verify
+    include Visitable
+    attr_accessor :value; 
    
    def verify(v)
         if v.class==Fixnum
@@ -22,8 +26,5 @@ class Lit < InterfaceExp
         print (@value)
     end
 
-    def eval
-        @value
-    end
 end
     

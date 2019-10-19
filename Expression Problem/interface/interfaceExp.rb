@@ -4,7 +4,8 @@ class InterfaceExp
         raise "é necessário implementar esse metodo"
     end
 
-    def eval
-        raise "é necessário implementar esse metodo"
-    end
+    # def eval
+    #     raise "é necessário implementar esse metodo"
+    # end
+
 end
