@@ -20,9 +20,5 @@ class Sub < InterfaceExp
         print (" - ")
         @right.printf;
     end
-
-    # def eval
-    #     @left.eval - @right.eval
-    # end
     
 end
