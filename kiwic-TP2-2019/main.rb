@@ -1,10 +1,12 @@
     require_relative "./class/dblp.rb"
     require_relative "./class/arquivo.rb"
     require_relative "./modules/phrase.rb"
+    require 'launchy'
 
     stopWords = Arquivo.new
     stopWords.openFile("recurso", "stop_words")
     vectorTitle = []
+    outputRecordingVector = []
     arqBase = Arquivo.new
 
     # Responsavel por escolher entre Buscar os titulos de um arquivo ou da API do dblp
@@ -55,38 +57,46 @@
         end
 
         # método responsável por ordenar o resultado do algoritmo kwic
-        vectorPhraseShiftedOrdenado=  arqBase.sort_Alphabet(vectorPhraseShifted)
+        outputRecordingVector =  arqBase.sort_Alphabet(vectorPhraseShifted)
         
-        system "clear"
-        puts "Digite o nome do arquivo de saida"
-        newFile = gets.chomp
-
-        # método responsável por escrever o resultado em um arquivo
-        arqBase.write_file(newFile, vectorPhraseShiftedOrdenado)
-            
-        puts "Seu arquivo de busca está pronto dentro da pasta: arquivo/#{newFile}.txt"
+        
         
     when 2      #Kwoc
         #métedo responsável por pegar a frase do usuário e transformar em um vetor, sem stopwords
         frase = Phrase.insere_phrase(stopWords);
 
         #Código para buscar titulos que estejam relacionados com a frase do usuário
-        vectorTitle = arqBase.kwoc(arqBase, frase, vectorTitle)
+        outputRecordingVector = arqBase.kwoc(arqBase, frase, vectorTitle)
 
-        if vectorTitle == false
+        if outputRecordingVector == false
         
             puts "não foi encontrado nenhum título com a frase informada =("
-        
-        else
-
-            system "clear"
-            puts "Digite o nome do arquivo de saida"
-            newFile = gets.chomp
-            
-            # método responsável por escrever o resultado em um arquivo
-            arqBase.write_file(newFile, vectorTitle)    
-            
-            puts "Seu arquivo de busca está pronto dentro da pasta: arquivo/#{newFile}.txt"
-
+            return 0
         end
     end
+
+    system "clear"
+    puts    "       Escolha o tipo da saída: 
+        [1] .txt              [2].html"
+    escolha = gets.chomp.to_i
+    
+    system "clear"
+    puts "Digite o nome do arquivo de saida"
+    newFile = gets.chomp
+
+    case escolha 
+
+    when 1
+
+        # método responsável por escrever o resultado em um arquivo .txt
+        arqBase.write_file(newFile, outputRecordingVector)
+        Launchy.open("file:///home/diego/Trabalhos/TP2/tp2kwic/kiwic-TP2-2019/saida/#{newFile}.txt")  
+        puts "Seu arquivo de busca está pronto dentro da pasta: arquivo/#{newFile}.txt"
+        
+    when 2
+        # método responsável por escrever o resultado em um arquivo .html
+        arqBase.write_file_html(newFile, outputRecordingVector)
+        Launchy.open("file:///home/diego/Trabalhos/TP2/tp2kwic/kiwic-TP2-2019/saida/#{newFile}.html")
+        puts "Seu arquivo de busca está pronto dentro da pasta: arquivo/#{newFile}.html"
+    end
+

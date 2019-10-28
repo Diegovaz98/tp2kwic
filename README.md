@@ -10,8 +10,10 @@
 
 ##### Para rodar os projetos, é necessário ter a linguagem ruby configurada em sua máquina, você pode consultar como realizar a instalação neste [**Link**](https://www.ruby-lang.org/pt/documentation/installation/).
 
-##### É necessário também instalar duas gems. Para isso, entre em cada uma das raizes das pastas do projeto e execute no terminal o comando 'bundle'. Ele irá instalar as gems utilizadas nesse projeto.
+##### É necessário também instalar duas gems. Para isso, entre em cada uma das raizes das pastas do projeto e execute no terminal o comando _bundle_. Ele irá instalar as gems utilizadas nesse projeto.
 
-##### Finalmente para ver o projeto funcionando, basta entrar em suas respectivas pastas e executar o comando ruby main.rb
+##### Finalmente para ver o projeto funcionando, basta entrar em suas respectivas pastas e executar o comando _ruby main.rb_
 
-##### Também foram realizados alguns testes encima desses algoritmos. Para executamos basta roda o comando ruby test.rb, dentro da raiz da pasta de cada projeto
+##### Também foram realizados alguns testes encima desses algoritmos. Para executamos basta roda o comando ruby _test.rb_, dentro da raiz da pasta de cada projeto
+
+###### Apresentação para o dia 19/10 (sábado) as 9h

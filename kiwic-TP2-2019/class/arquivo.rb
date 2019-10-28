@@ -23,9 +23,27 @@ class Arquivo
     # escreve o resultado em um arquivo
     def write_file(newfile, vector)
         vector.each do |phrase|
-            file = File.open("arquivo/"+newfile+".txt", "a"){|file| file.write(phrase + "\n")}
+            file = File.open("saida/"+newfile+".txt", "a"){|file| file.write(phrase + "\n")}
         end
         newfile
+    end
+
+    def write_file_html(newfile, vector)
+        
+        File.open("saida/"+newfile+".html", "w") do |file|
+             file.puts "<html> \n       <head> \n          <meta charset='utf-8'/>\n           <title>Saida</title> \n    </head> \n\n    <body> \n           <div style='margin: 30px; display: flex; justify-content: center;'>\n               <h1>Trabalho Kwic - TP2</h1>\n            
+             </div>       <ol>\n"
+        end
+
+        vector.each do |phrase|
+            file = File.open("saida/"+newfile+".html", "a"){|file| file.write("            <li>#{phrase} </li>\n")}
+        end
+
+        File.open("saida/"+newfile+".html", "a") do |file|
+            file.puts "         </ol>\n     </body>\n</html>"
+       end
+
+
     end
 
 end
