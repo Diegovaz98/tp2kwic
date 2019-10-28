@@ -11,12 +11,12 @@ lit3 = Lit.new(5)
 # sub.accept(Eval.new)
 add = Add.new(lit2, lit)
 sub = Sub.new(add, add)
-sub.accept(Count.new)
+# add = Add.new(sub, sub)
+# sub.accept(Count.new)
 
 # puts add.accept(Eval.new)
-puts sub.accept(Eval.new)
+puts "Resultado da subtatração de duas somas: #{sub.accept(Eval.new)}"
 # puts add.accept(Count.new) 
+# sub.printf
 sub.printf
-puts
-add.printf
 puts

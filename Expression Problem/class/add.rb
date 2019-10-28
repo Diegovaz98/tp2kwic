@@ -1,24 +1,22 @@
 
 require_relative '../interface/interfaceExp.rb'
-require_relative '../module/verify.rb'
-require_relative '../module/visitable.rb'
 
 class Add < InterfaceExp
-    include Verify
-    include Visitable
     attr_accessor :left, :right
 
     def initialize(l, r)
-        # if verify(l,r)
-            @left = l
-            @right = r
-        ## end
+        @left = l
+        @right = r
     end
 
     def printf
         @left.printf
         print (" + ")
         @right.printf;
+    end
+
+    def accept(visitor)
+        visitor.visitAdd(self)
     end
   
 end

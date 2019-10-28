@@ -1,29 +1,19 @@
 require_relative '../interface/interfaceExp.rb'
-require_relative '../module/verify.rb'
-require_relative '../module/visitable.rb'
 
 class Lit < InterfaceExp
    
-    include Verify
-    include Visitable
     attr_accessor :value; 
-   
-   def verify(v)
-        if v.class==Fixnum
-            return true
-        else 
-            raise "Tipo invalido"
-        end
-    end
 
     def initialize(v)
-        if verify(v) 
-            @value = v
-        end
+        @value = v
     end
 
     def printf
-        print (@value)
+        print @value
+    end
+
+    def accept(visitor)
+        visitor.visitLit(self)
     end
 
 end
